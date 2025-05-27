@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, setUser } = useContext(AuthContext);
   const handelLogInForm = (e) => {
     e.preventDefault();
     // get form data
@@ -14,10 +15,13 @@ const Login = () => {
     login(email, password)
       .then((result) => {
         const user = result.user;
+        setUser(user);
+        toast.success("Login Successfully!");
         console.log(user);
       })
       .catch((err) => {
         console.log(err);
+        toast.error(`${err}`);
       });
   };
   return (
