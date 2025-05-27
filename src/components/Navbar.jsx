@@ -13,9 +13,12 @@ const Navbar = () => {
       </div>
       <div className="flex gap-3">
         <img src={navUser} alt="" />
-        <button className="py-1 px-4 rounded-md bg-[#403F3F] text-white">
+        <Link
+          to="/auth/login"
+          className="py-1 px-4 rounded-md bg-[#403F3F] text-white"
+        >
           Login
-        </button>
+        </Link>
       </div>
     </div>
   );
