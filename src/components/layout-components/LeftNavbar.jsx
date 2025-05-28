@@ -8,6 +8,7 @@ const LeftNavbar = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data.data.news_category));
   }, []);
+  console.log(import.meta.env.VITE_a);
   return (
     <div>
       <h3 className="font-semibold">All category ({categories.length})</h3>

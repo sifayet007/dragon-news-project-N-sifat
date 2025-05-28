@@ -3,7 +3,7 @@ import News from "../components/News";
 
 const CategoryNews = () => {
   const { data: news } = useLoaderData();
-  console.log(news);
+  // console.log(news);
 
   return (
     <div>

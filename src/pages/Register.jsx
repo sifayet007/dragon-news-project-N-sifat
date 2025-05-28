@@ -28,14 +28,14 @@ const Register = () => {
             navigate("/");
             toast.success("Register Successfully!");
           })
-          .catch((err) => {
-            console.log("Profile update error: ", err);
+          .catch(() => {
+            // console.log("Profile update error: ", err);
           });
       })
       .catch((error) => {
-        const errorCode = error.code;
+        // const errorCode = error.code;
         const errorMessage = error.message;
-        console.log("ErrorCode: ", errorCode, "ErrorMessage: ", errorMessage);
+        // console.log("ErrorCode: ", errorCode, "ErrorMessage: ", errorMessage);
 
         toast.error(`${errorMessage}`);
       });

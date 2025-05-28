@@ -2,9 +2,9 @@ import { FaRegBookmark } from "react-icons/fa";
 import { CiShare2 } from "react-icons/ci";
 import { Link } from "react-router-dom";
 const News = ({ news }) => {
-  console.log(news);
+  // console.log(news);
   const { author, title, image_url, details, _id } = news;
-  console.log(_id);
+  // console.log(_id);
   return (
     <div className="px-5">
       <div className="flex justify-between bg-[#F3F3F3] p-5 mt-3">

@@ -8,24 +8,24 @@ const Login = () => {
   // const[error, setError] = useState();
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
+  // console.log(location);
   const handelLogInForm = (e) => {
     e.preventDefault();
     // get form data
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     login(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
         navigate(location?.state ? location.state : "/");
         toast.success("Login Successfully!");
-        console.log(user);
+        // console.log(user);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         toast.error(`${err}`);
       });
   };
