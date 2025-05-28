@@ -15,11 +15,11 @@ const News = ({ news }) => {
             <p>{author.published_date}</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
-          <span>
+        <div className="flex items-center gap-2 ">
+          <span className="cursor-pointer">
             <FaRegBookmark />
           </span>
-          <span>
+          <span className="cursor-pointer">
             <CiShare2 />
           </span>
         </div>

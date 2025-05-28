@@ -14,7 +14,20 @@ const Navbar = () => {
         <Link to="/career">Career</Link>
       </div>
       <div className="flex gap-3">
-        <img className="rounded-full" src={navUser} alt="" />
+        <div>
+          {user && user?.email ? (
+            <div className="flex flex-col items-center">
+              <img
+                className="w-8 rounded-full h-8"
+                src={user?.photoURL}
+                alt=""
+              />
+              <p>{user.displayName}</p>
+            </div>
+          ) : (
+            <img className="rounded-full" src={navUser} alt="" />
+          )}
+        </div>
         <div>
           {user && user?.email ? (
             <button

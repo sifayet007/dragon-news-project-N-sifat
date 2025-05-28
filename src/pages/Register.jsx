@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createNewUser, setUser } = useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     // get form data
@@ -13,17 +15,28 @@ const Register = () => {
     const photoUrl = form.get("photoUrl");
     const email = form.get("email");
     const password = form.get("password");
-    console.log({ name, photoUrl, email, password });
+    // console.log({ name, photoUrl, email, password });
     createNewUser(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
-        toast.success("Register Successfully!s");
+
+        updateUserProfile({ displayName: name, photoURL: photoUrl })
+          .then(() => {
+            // profile update successful
+            setUser({ ...result.user, displayName: name, photoURL: photoUrl }); // manually update local state
+            navigate("/");
+            toast.success("Register Successfully!");
+          })
+          .catch((err) => {
+            console.log("Profile update error: ", err);
+          });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log("ErrorCode: ", errorCode, "ErrorMessage: ", errorMessage);
+
         toast.error(`${errorMessage}`);
       });
   };

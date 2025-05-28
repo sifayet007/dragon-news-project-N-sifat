@@ -1,10 +1,14 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { login, setUser } = useContext(AuthContext);
+  // const[error, setError] = useState();
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const handelLogInForm = (e) => {
     e.preventDefault();
     // get form data
@@ -16,6 +20,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        navigate(location?.state ? location.state : "/");
         toast.success("Login Successfully!");
         console.log(user);
       })
